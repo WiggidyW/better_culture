@@ -1,0 +1,6 @@
+title_direct_de_jure_count = {
+	change_variable = {
+		variable = $VAR$
+		operation = { add = 1 }
+	}
+}
