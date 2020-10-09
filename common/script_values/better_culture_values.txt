@@ -1,73 +1,93 @@
-﻿title_direct_de_jure_count = {
+﻿total_development = {
 	value = 0
-	if = {
-		limit = { tier = tier_duchy }
-		every_in_de_jure_hierarchy = {
-			continue = { tier > tier_county }
-			limit = { tier = tier_county }
-			add = 1
-		}
-	}
-	else_if = {
-		limit = { tier = tier_kingdom }
-		every_in_de_jure_hierarchy = {
-			continue = { tier > tier_duchy }
-			limit = { tier = tier_duchy }
-			add = 1
-		}
-	}
-	else = {}
-}
-
-kingdom_culture_power = {
-	value = 0
-	if = {
-		limit = { tier = tier_kingdom }
-		if = {
-			limit = {
-				any_in_de_jure_hierarchy = {
-					tier = tier_duchy
-					count > 0
-				}
-			}
-			every_in_de_jure_hierarchy = {
-				continue = { tier > tier_duchy }
-				limit = { tier = tier_duchy }
-				add = duchy_culture_power
-			}
-			divide = title_direct_de_jure_count
-		}
+	every_in_de_jure_hierarchy = {
+		limit = { tier = tier_county }
+		add = development_level
 	}
 }
 
-duchy_culture_power = {
+culture_power = {
 	value = 0
-	if = {
-		limit = { tier = tier_duchy }
-		if = {
-			limit = {
-				any_in_de_jure_hierarchy = {
-					tier = tier_county
-					count > 0
-				}
-			}
-			every_in_de_jure_hierarchy = {
-				continue = { tier > tier_county }
-				limit = { tier = tier_county }
-				add = county_culture_power
-			}
-			divide = title_direct_de_jure_count
-		}
-	}
-}
-
-county_culture_power = {
-	value = 0
-	if = {
+	every_in_de_jure_hierarchy = {
 		limit = { tier = tier_county }
 		if = {
 			limit = { culture = scope:target_culture }
-			add = 1
+			add = development_level
 		}
 	}
+	divide = total_development
 }
+
+#direct_de_jure_count = {
+#	value = 0
+#	if = {
+#		limit = { tier = tier_duchy }
+#		every_in_de_jure_hierarchy = {
+#			continue = { tier > tier_county }
+#			limit = { tier = tier_county }
+#			add = 1
+#		}
+#	}
+#	else_if = {
+#		limit = { tier = tier_kingdom }
+#		every_in_de_jure_hierarchy = {
+#			continue = { tier > tier_duchy }
+#			limit = { tier = tier_duchy }
+#			add = 1
+#		}
+#	}
+#	else = {}
+#}
+
+#kingdom_culture_power = {
+#	value = 0
+#	if = {
+#		limit = { tier = tier_kingdom }
+#		if = {
+#			limit = {
+#				any_in_de_jure_hierarchy = {
+#					tier = tier_duchy
+#					count > 0
+#				}
+#			}
+#			every_in_de_jure_hierarchy = {
+#				continue = { tier > tier_duchy }
+#				limit = { tier = tier_duchy }
+#				add = duchy_culture_power
+#			}
+#			divide = title_direct_de_jure_count
+#		}
+#	}
+#}
+
+#duchy_culture_power = {
+#	value = 0
+#	if = {
+#		limit = { tier = tier_duchy }
+#		if = {
+#			limit = {
+#				any_in_de_jure_hierarchy = {
+#					tier = tier_county
+#					count > 0
+#				}
+#			}
+#			every_in_de_jure_hierarchy = {
+#				continue = { tier > tier_county }
+#				limit = { tier = tier_county }
+#				add = county_culture_power
+#			}
+#			divide = title_direct_de_jure_count
+#		}
+#	}
+#}
+
+#county_culture_power = {
+#	value = 0
+#	if = {
+#		limit = { tier = tier_county }
+#		if = {
+#			limit = { culture = scope:target_culture }
+#			add = 1
+#		}
+#	}
+#}

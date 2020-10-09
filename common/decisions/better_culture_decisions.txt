@@ -4,9 +4,12 @@
 	ai_potential = { always = no }
 	ai_will_do = { base = 0 }
 	effect = {
-		culture:breton = {
+		culture:irish = {
 			save_temporary_scope_as = target_culture
 		}
-		add_gold = title:d_brittany.duchy_culture_power
+		add_gold = {
+			value = 100
+			multiply = title:d_meath.culture_power
+		}
 	}
 }
